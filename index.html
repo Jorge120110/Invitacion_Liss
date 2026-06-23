@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nuestra Boda</title>
+    <title>Boda de Liss y Misael</title>
     <!-- Importar tipografías de Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
@@ -68,6 +68,46 @@
             align-items: center;
             padding: 40px;
             background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); 
+        }
+
+        /*Contraste para los nombres*/
+        .welcome-screen h1, 
+        .welcome-screen .cursiva {
+            color: #ffffff; 
+            text-shadow: 2px 2px 12px rgba(0, 0, 0, 0.6); 
+            margin-bottom: 5px; 
+            font-size: 7rem; 
+        }
+
+        /*El nuevo subtítulo*/
+        .welcome-screen .subtitulo {
+            font-family: var(--fuente-texto);
+            color: #512d1f;
+            font-size: 1.1rem;
+            letter-spacing: 4px;
+            text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 15px;
+            margin-top: 5px;
+        }
+
+        /*El botón redondeado y translúcido*/
+        .welcome-screen #btn-entrar {
+            background-color: rgba(255, 255, 255, 0.85);
+            border: none;
+            border-radius: 30px; 
+            padding: 12px 35px;
+            color: var(--color-texto);
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto al pasar el mouse por el botón */
+        .welcome-screen #btn-entrar:hover {
+            background-color: var(--color-texto);
+            color: #ffffff;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
         }
 
         /*Ajuste de texto en los bloques*/
@@ -197,6 +237,7 @@
             top: 0;
             left: 0;
             width: 100%;
+            padding-bottom: 10vh;
             height: 100vh;
             z-index: 9999;
             display: flex;
@@ -222,12 +263,9 @@
 <body class="no-scroll">
 
     <!--Pantalla de Bienvenida-->
-    <div id="welcome-screen" class="welcome-screen">
-        <h1 class="cursiva" style="font-size: 10rem; color: #E0C3A9; text-shadow: 1px  0px 0px lightslategray
-        ,
-               0px  1px 0px lightblue,
-              -1px  0px 0px lightblue,
-               0px -1px 0px lightslategray;;">Liss y Misael</h1>
+    <div class="welcome-screen" id="welcome-screen">
+        <h1 class="cursiva">Liss y Misael</h1>
+        <p class="subtitulo">NUESTRA BODA</p>
         <button id="btn-entrar" class="btn">Abrir Invitación</button>
     </div>
 
