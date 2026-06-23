@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuestra Boda</title>
+    <!-- Importar tipografías de Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+    <style>
+        /* Paleta de colores y variables */
+        :root {
+            --color-fondo-oscuro: #b89b82; /* Tono arena/café claro */
+            --color-fondo-claro: #f8f6f0; /* Tono crema tipo papel */
+            --color-texto: #4a3b32; /* Café oscuro para leer bien */
+            --fuente-titulos: 'Great Vibes', cursive;
+            --fuente-texto: 'Cormorant Garamond', serif;
+        }
+        
+        /*Margenes y Relleno*/
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /*Fuentes base*/
+        body {
+            font-family: var(--fuente-texto);
+            color: var(--color-texto);
+            background-color: var(--color-fondo-oscuro);
+            text-align: center;
+        }
+
+        /*Tipografias*/
+        h1, h2, h3, .cursiva {
+            font-family: var(--fuente-titulos);
+            font-weight: normal;
+        }
+
+        /*Utilidad de fondos */
+        .bg-claro { background-color: var(--color-fondo-claro); }
+        .bg-oscuro { background-color: var(--color-fondo-oscuro); }
+
+        /*Contenedor en dos Columnas*/
+        .split-section {
+            display: flex;
+            flex-wrap: wrap;
+            width: 100%;
+        }
+
+        /*Dividir los contenedores en la mitad*/
+        .split-section > div {
+            flex: 1 1 50%;
+            min-height: 400px;
+        }
+
+        /*Hace que la imagen cubra todo el contenedor*/
+        .img-container {
+            background-size: cover;
+            background-position: center;
+        }
+
+        /*Formateador de contenedor de texto*/
+        .text-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 40px;
+            background-image: url('https://www.transparenttextures.com/patterns/cream-paper.png'); 
+        }
+
+        /*Ajuste de texto en los bloques*/
+        .text-container h2 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--color-texto);
+        }
+
+        /*Lo mismo*/
+        .text-container p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        /*Separador de imagen con efecto fijo*/
+        .full-width-img {
+            width: 100%;
+            height: 50vh;
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /*Hacer mas grande el texto sobre los banners*/
+        .full-width-img h2 {
+            font-size: 4rem;
+        }
+
+        /*Iconos*/
+        .dress-code-icons {
+            font-size: 3rem;
+            margin: 20px 0;
+        }
+
+        /*Circulos del codigo de vestimenta*/
+        .color-palette {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .color-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            border: 1px solid #ccc;
+        }
+
+        /*Cuadricula para las imagenes*/
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            padding: 40px;
+            background-color: var(--color-fondo-oscuro);
+        }
+        .gallery img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        /*Efecto y color a botone*/
+        .btn {
+            display: inline-block;
+            padding: 10px 25px;
+            margin-top: 15px;
+            border: 1px solid var(--color-texto);
+            color: var(--color-texto);
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background-color: var(--color-texto);
+            color: var(--color-fondo-claro);
+        }
+
+        /* Responsivo (Celulares) */
+        @media (max-width: 768px) {
+            .split-section { flex-direction: column; }
+            .split-section.reverse { flex-direction: column-reverse; } 
+            .split-section > div { flex: 1 1 100%; }
+            .full-width-img { height: 30vh; }
+            .gallery { grid-template-columns: repeat(2, 1fr); padding: 15px;}
+        }
+        
+        body.no-scroll {
+            overflow: hidden; /
+        }
+
+        @media (min-width: 769px) {
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+
+            background-image: url('/img/BackWelcome2.jpg');
+            background-size: 100% 100%; 
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .welcome-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            z-index: 9999;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            transition: opacity 1.5s ease-in-out, visibility 1.5s ease-in-out;
+
+            background-image: url('/img/BackWelcome2.jpg');
+            background-size: auto 100%; 
+            background-repeat: no-repeat;
+            background-position: center center;
+        }
+    }
+
+    .welcome-screen.oculto {
+        opacity: 0;
+        visibility: hidden;
+    }
+    </style>
+</head>
+<body class="no-scroll">
+
+    <!--Pantalla de Bienvenida-->
+    <div id="welcome-screen" class="welcome-screen">
+        <h1 class="cursiva" style="font-size: 10rem; color: #E0C3A9; text-shadow: 1px  0px 0px lightslategray
+        ,
+               0px  1px 0px lightblue,
+              -1px  0px 0px lightblue,
+               0px -1px 0px lightslategray;;">Liss y Misael</h1>
+        <button id="btn-entrar" class="btn">Abrir Invitación</button>
+    </div>
+
+     <!--Musica de Fondo-->
+    <audio id="musica-fondo" loop preload="auto">
+        <source src="/music/SongBack.mp3" type="audio/mpeg">
+    </audio>
+
+    <!--Portada-->
+    <div class="full-width-img" style="background-image: url('https://images.unsplash.com/photo-1519225421980-715cb0215aed?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); height: 100vh;">
+        <div>
+            <h2>Nuestra Boda</h2>
+            <p style="font-size: 3rem; font-family: var(--fuente-texto); letter-spacing: 3px;">LISS Y MISAEL</p>
+        </div>
+    </div>
+
+    <!--Bloque Intercalado 1-->
+    <div class="split-section">
+        <div class="img-container" style="background-image: url('https://images.unsplash.com/photo-1511285560929-80b456fea0bc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+        <div class="text-container bg-claro">
+            <h2>Nuestra Historia</h2>
+            <p>"El amor no se mira, se siente, y aún más cuando ella está junto a ti."</p>
+            <p>Acompáñanos a celebrar nuestro gran día.</p>
+        </div>
+    </div>
+
+    <!--Separador Parallax-->
+    <div class="full-width-img" style="background-image: url('https://images.unsplash.com/photo-1469334031218-e382a71b716b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+        <h2>Save the Date</h2>
+    </div>
+
+    <!--Bloque Intercalado 2-->
+    <div class="split-section reverse">
+        <div class="text-container bg-claro">
+            <h2>Cuándo & Dónde</h2>
+            <p><strong>Ceremonia Religiosa</strong><br>Templo de San Francisco<br>4:00 PM</p>
+            <p><strong>Recepción</strong><br>Hacienda Los Arcángeles<br>6:00 PM</p>
+            <a href="#" class="btn">Ver en el Mapa</a>
+        </div>
+        <div class="img-container" style="background-image: url('https://images.unsplash.com/photo-1520854221256-17451cc331bf?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+    </div>
+
+    <!--Código de Vestimenta-->
+    <div class="text-container bg-claro" style="padding: 60px 20px;">
+        <h2>Dress Code</h2>
+        <p>Formal Riguroso</p>
+        <p>Colores reservados para la novia:</p>
+        <div class="color-palette">
+            <div class="color-circle" style="background-color: #ffffff;"></div>
+            <div class="color-circle" style="background-color: #f5f5dc;"></div>
+            <div class="color-circle" style="background-color: #ffb6c1;"></div>
+        </div>
+    </div>
+
+    <!--Galería de Fotos-->
+    <div style="background-color: var(--color-fondo-oscuro); padding-top: 40px;">
+        <h2 style="color: white; font-size: 3rem;">Nuestros Momentos</h2>
+        <div class="gallery">
+            <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto 1">
+            <img src="https://images.unsplash.com/photo-1606800052052-a08af7148866?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto 2">
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto 3">
+            <img src="https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" alt="Foto 4">
+        </div>
+    </div>
+
+    <!--Mesa de Regalos / Confirmación-->
+    <div class="text-container bg-claro" style="padding: 80px 20px;">
+        <h2>Mesa de Regalos</h2>
+        <p>Tu presencia es nuestro mejor regalo. Sin embargo, si deseas tener un detalle con nosotros, te compartimos la siguiente información:</p>
+        <p><strong>Lluvia de Sobres</strong> o Transferencia Bancaria.</p>
+        <br>
+        <h2>Confirmación</h2>
+        <p>Por favor confirma tu asistencia antes del 15 de Noviembre.</p>
+        <a href="https://wa.me/12345678" target="_blank" class="btn">Confirmar por WhatsApp</a>
+    </div>
+
+    <!--Imagen de cierre-->
+    <div class="full-width-img" style="background-image: url('https://images.unsplash.com/photo-1465495976277-4387d4b0b4c6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); height: 60vh;">
+        <div>
+            <h2>¡Te esperamos!</h2>
+        </div>
+    </div>
+
+    <!--Script optimizado para móviles-->
+    <script>
+        const welcomeScreen = document.getElementById("welcome-screen");
+        const btnEntrar = document.getElementById("btn-entrar");
+        const audio = document.getElementById("musica-fondo");
+
+        btnEntrar.addEventListener("click", () => {
+            welcomeScreen.classList.add("oculto");
+           
+            setTimeout(() => {
+                document.body.classList.remove("no-scroll");
+            }, 1500);
+
+            let playPromise = audio.play();
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("El navegador bloqueó el autoplay");
+                });
+            }
+        });
+
+    </script> 
+    </script>
+</body>
+</html>
